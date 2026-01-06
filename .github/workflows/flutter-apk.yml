@@ -20,13 +20,17 @@ jobs:
           channel: "stable"
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          cd skt_login
+          flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+          cd skt_login
+          flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: skt_login/build/app/outputs/flutter-apk/app-release.apk
